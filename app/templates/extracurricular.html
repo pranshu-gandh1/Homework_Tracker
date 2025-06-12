@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Extra Curricular Activities</h2>
+<a href="{{ url_for('extracurricular_bp.add_extracurricular') }}" class="btn btn-primary mb-3">Add Activity</a>
+<ul class="list-group">
+    {% for ec in extracurriculars %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{ ec.title }}</strong> - {{ ec.activity_type }} - Due: {{ ec.due_date.strftime('%Y-%m-%d') }}
+            <br>{{ ec.description }}
+        </div>
+        <div>
+            <a href="{{ url_for('extracurricular_bp.edit_extracurricular', ec_id=ec.id) }}" class="btn btn-sm btn-warning">Edit</a>
+            <form action="{{ url_for('extracurricular_bp.delete_extracurricular', ec_id=ec.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this activity?');">Delete</button>
+            </form>
+        </div>
+    </li>
+    {% else %}
+    <li class="list-group-item">No activities yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,50 @@
+/* Base Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Customization */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+}
+
+/* Form Styling */
+form .form-control,
+form .form-select {
+    box-shadow: none;
+    border-radius: 0.25rem;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+/* Flash Messages */
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+}
+
+/* Dashboard Homework List */
+.list-group-item {
+    background-color: #ffffff;
+    border-color: #ddd;
+    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+}
