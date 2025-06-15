@@ -1,20 +1,50 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
 <h2>Add Extracurricular</h2>
 <form method="POST" action="">
+    <!-- Ensure CSRF protection -->
     {{ form.hidden_tag() }}
     <div class="mb-3">
+        <!-- Render each form field with Bootstrap classes for styling -->
         {{ form.title.label }} {{ form.title(class="form-control") }}
     </div>
     <div class="mb-3">
+        <!-- Category selection dropdown -->
         {{ form.category.label }} {{ form.category(class="form-control") }}
     </div>
+    <!-- Use a date picker for the due date -->
     <div class="mb-3">
         {{ form.due_date.label }} {{ form.due_date(class="form-control") }}
     </div>
     <div class="mb-3">
+        <!-- Description field for additional details -->
         {{ form.description.label }} {{ form.description(class="form-control") }}
     </div>
     {{ form.submit(class="btn btn-primary") }}
 </form>
+
+<hr>
+<h3>Your Extracurricular Activities</h3>
+{% if extracurriculars %}
+    <!-- Display the list of extracurricular activities -->
+    <ul class="list-group mt-3">
+    {% for ec in extracurriculars %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{ ec.title }}</strong> - {{ ec.category }} (Due: {{ ec.due_date.strftime('%Y-%m-%d') }})<br>
+                <small>{{ ec.description }}</small>
+            </div>
+            <div>
+                <!-- Edit and Delete buttons for each activity -->
+                <a href="{{ url_for('extracurricular_bp.edit_extracurricular', ec_id=ec.id) }}" class="btn btn-sm btn-warning">Edit</a>
+                <form action="{{ url_for('extracurricular_bp.delete_extracurricular', ec_id=ec.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-muted mt-3">No extracurricular activities added yet.</p>
+{% endif %}
 {% endblock %}

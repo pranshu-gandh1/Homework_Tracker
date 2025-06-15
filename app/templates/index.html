@@ -6,6 +6,7 @@
     <p class="lead">Stay organized. Track your assignments. Beat deadlines.</p>
     <hr class="my-4">
     {% if not current_user.is_authenticated %}
+    <!-- If the user is not authenticated, show the registration button -->
     <a class="btn btn-primary btn-lg" href="{{ url_for('auth.register') }}">Get Started</a>
     {% endif %}
 </div>

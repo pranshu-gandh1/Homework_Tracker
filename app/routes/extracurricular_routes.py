@@ -1,23 +1,24 @@
-# app/routes/extracurricular_routes.py
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required
 from app import db
 from app.models import Extracurricular
 from app.forms import ExtracurricularForm
 
-extracurricular_bp = Blueprint('extracurricular_bp', __name__)
+extracurricular_bp = Blueprint('extracurricular_bp', __name__)  # Blueprint for extracurricular routes
 
 @extracurricular_bp.route('/extracurricular', methods=['GET'])
 @login_required
 def extracurricular_list():
+    # Show extracurricular activities for current user
     extracurriculars = Extracurricular.query.filter_by(user_id=current_user.id).order_by(Extracurricular.due_date).all()
     return render_template('extracurricular.html', extracurriculars=extracurriculars)
 
 @extracurricular_bp.route('/extracurricular/add', methods=['GET', 'POST'])
 @login_required
 def add_extracurricular():
-    user_id=current_user.id
+    #Add an extracurricular activity
     form = ExtracurricularForm()
+    extracurriculars = Extracurricular.query.filter_by(user_id=current_user.id).order_by(Extracurricular.due_date).all()
     if form.validate_on_submit():
         ec = Extracurricular(
             title=form.title.data,
@@ -29,12 +30,13 @@ def add_extracurricular():
         db.session.add(ec)
         db.session.commit()
         flash('Extra Curricular added!', 'success')
-        return redirect(url_for('extracurricular_bp.extracurricular_list'))
-    return render_template('add_extracurricular.html', form=form)
+        return redirect(url_for('extracurricular_bp.add_extracurricular'))
+    return render_template('add_extracurricular.html', form=form, extracurriculars=extracurriculars)
 
 @extracurricular_bp.route('/extracurricular/edit/<int:ec_id>', methods=['GET', 'POST'])
 @login_required
 def edit_extracurricular(ec_id):
+    # Edit an existing extracurricular by id
     user_id=current_user.id
     ec = Extracurricular.query.get_or_404(ec_id)
     if ec.user_id != current_user.id:
@@ -54,6 +56,7 @@ def edit_extracurricular(ec_id):
 @extracurricular_bp.route('/extracurricular/delete/<int:ec_id>', methods=['POST'])
 @login_required
 def delete_extracurricular(ec_id):
+    # Delete extracurricular if user owns it
     ec = Extracurricular.query.get_or_404(ec_id)
     if ec.user_id != current_user.id:
         flash('Unauthorized action.', 'danger')

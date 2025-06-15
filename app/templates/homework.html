@@ -10,7 +10,9 @@
             <br>{{ hw.description }}
         </div>
         <div>
-            <a href="{{ url_for('homework_bp.edit_homework', hw_id=hw.id) }}" class="btn btn-sm btn-warning">Edit</a>
+            <!-- 'hw' is an instance of Homework model with attributes 'title', 'category', 'due_date', and 'description' -->
+            <a href="{{ url_for('homework_bp.edit_homework', hw_id=hw.id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Link to edit homework -->
+            <!-- 'homework_bp.edit_homework' is the route for editing homework -->
             <form action="{{ url_for('homework_bp.delete_homework', hw_id=hw.id) }}" method="POST" style="display:inline;">
                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this homework?');">Delete</button>
             </form>

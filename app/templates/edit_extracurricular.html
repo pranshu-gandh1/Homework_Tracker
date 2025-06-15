@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Edit Extra Curricular Activity</h2>
-<form method="POST" action="">
+<form method="POST" action=""> <!-- This form is used to edit an extracurricular activity -->
     {{ form.hidden_tag() }}
-    <div class="mb-3">
-        {{ form.title.label }} {{ form.title(class="form-control") }}
+    <div class="mb-3"> 
+        {{ form.title.label }} {{ form.title(class="form-control") }} <!-- 'title' is an instance of Extracurricular model with attribute 'title' -->
     </div>
     <div class="mb-3">
         {{ form.category.label }} {{ form.category(class="form-control") }}

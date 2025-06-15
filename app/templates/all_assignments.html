@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}All Assignments{% endblock %}
+
+{% block content %}
+<h1>All Assignments</h1>
+
+<h2>Homework</h2>
+{% if homeworks %}
+    <ul>
+    {% for hw in homeworks %}
+        <li>
+            <strong>{{ hw.title }}</strong> - Due: {{ hw.due_date.strftime('%Y-%m-%d') }}<br> <!-- Format the date to YYYY-MM-DD -->
+            {{ hw.description }}<br> <!-- Display the description of the homework -->
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No homework assignments found.</p>
+{% endif %}
+
+<h2>Extracurriculars</h2>
+{% if extracurriculars %}
+    <ul>
+    {% for ec in extracurriculars %}
+        <li>
+            <strong>{{ ec.title }}</strong> - Due: {{ ec.due_date.strftime('%Y-%m-%d') }}<br>
+            {{ ec.description }}<br>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No extracurricular assignments found.</p>
+{% endif %}
+
+{% endblock %}

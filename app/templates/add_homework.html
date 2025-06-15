@@ -6,15 +6,42 @@
     <div class="mb-3">
         {{ form.title.label }} {{ form.title(class="form-control") }}
     </div>
+    <!-- add 'form.category'; is a SelectField  -->
     <div class="mb-3">
         {{ form.category.label }} {{ form.category(class="form-control") }}
     </div>
     <div class="mb-3">
+        <!-- add 'form.due_date'; is a DateField  -->
         {{ form.due_date.label }} {{ form.due_date(class="form-control") }}
     </div>
     <div class="mb-3">
+        <!-- add 'form.description'; is a TextAreaField  -->
         {{ form.description.label }} {{ form.description(class="form-control") }}
     </div>
     {{ form.submit(class="btn btn-primary") }}
 </form>
+
+<hr>
+<h3>Your Homework</h3>
+{% if homeworks %}
+    <ul class="list-group mt-3">
+    {% for hw in homeworks %}
+    <!-- 'hw' is an instance of Homework model with attributes 'title', 'category', 'due_date', and 'description' -->
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{ hw.title }}</strong> - {{ hw.category }} (Due: {{ hw.due_date.strftime('%Y-%m-%d') }})<br>
+                <small>{{ hw.description }}</small>
+            </div>
+            <div> 
+                <a href="{{ url_for('homework_bp.edit_homework', hw_id=hw.id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Link to edit homework -->
+                <form action="{{ url_for('homework_bp.delete_homework', hw_id=hw.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-muted mt-3">No homework added yet.</p>
+{% endif %}
 {% endblock %}

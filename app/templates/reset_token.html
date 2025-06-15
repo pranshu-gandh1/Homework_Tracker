@@ -2,7 +2,7 @@
 {% block title %}Set New Password{% endblock %}
 {% block content %}
 <h2>Set New Password</h2>
-<form method="POST">
+<form method="POST"> <!-- This form is used to set a new password after a reset token has been verified -->
     {{ form.hidden_tag() }}
     <div class="mb-3">{{ form.password.label }} {{ form.password(class="form-control") }}</div>
     <div class="mb-3">{{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}</div>

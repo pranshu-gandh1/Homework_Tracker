@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Extracurricular List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Extracurricular Activities</h2>
+    {% if extracurricular_items %}
+        <ul class="list-group">
+            {% for activity in extracurricular_items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center"> <!-- Display each extracurricular activity -->
+                    <div>
+                        <strong>{{ activity.title }}</strong><br>
+                        {% if activity.description %}
+                            Description: {{ activity.description }}<br>
+                        {% endif %}
+                        Category: {{ activity.category }}<br>
+                        Due: {{ activity.due_date.strftime('%Y-%m-%d') }}
+                    </div>
+                    <span class="badge bg-secondary">{{ activity.status }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No extracurricular activities found.</p>
+    {% endif %}
+</div>
+{% endblock %}

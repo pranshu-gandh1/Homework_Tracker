@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Homework List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Homework Assignments</h2>
+    {% if homework_items %}
+        <ul class="list-group">
+            {% for hw in homework_items %}
+            <!-- Display each homework item -->
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ hw.title }}</strong><br>
+                        {% if hw.description %}
+                            Description: {{ hw.description }}<br>
+                        {% endif %}
+                        Category: {{ hw.category }}<br>
+                        Due: {{ hw.due_date.strftime('%Y-%m-%d') }}
+                    </div>
+                    <span class="badge bg-primary">{{ hw.status }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No homework assignments found.</p>
+    {% endif %}
+</div>
+{% endblock %}
