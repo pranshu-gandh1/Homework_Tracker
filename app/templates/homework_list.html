@@ -12,17 +12,17 @@
                     <div>
                         <strong>{{ hw.title }}</strong><br>
                         {% if hw.description %}
-                            Description: {{ hw.description }}<br>
-                        {% endif %}
+                            Description: {{ hw.description }}<br> <!-- Display the description if it exists -->
+                        {% endif %} 
                         Category: {{ hw.category }}<br>
                         Due: {{ hw.due_date.strftime('%Y-%m-%d') }}
                     </div>
-                    <span class="badge bg-primary">{{ hw.status }}</span>
+                    <span class="badge bg-primary">{{ hw.status }}</span> <!-- Display the status of the homework -->
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No homework assignments found.</p>
+        <p>No homework assignments found.</p> <!-- Display a message if no homework items are available -->
     {% endif %}
 </div>
 {% endblock %}

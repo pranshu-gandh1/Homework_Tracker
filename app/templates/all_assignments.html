@@ -24,7 +24,7 @@
     <ul>
     {% for ec in extracurriculars %}
         <li>
-            <strong>{{ ec.title }}</strong> - Due: {{ ec.due_date.strftime('%Y-%m-%d') }}<br>
+            <strong>{{ ec.title }}</strong> - Due: {{ ec.due_date.strftime('%Y-%m-%d') }}<br> <!---Format the date to YYYY-MM-DD-->
             {{ ec.description }}<br>
         </li>
     {% endfor %}

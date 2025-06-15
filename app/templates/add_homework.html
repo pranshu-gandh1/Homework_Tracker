@@ -34,7 +34,7 @@
             </div>
             <div> 
                 <a href="{{ url_for('homework_bp.edit_homework', hw_id=hw.id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Link to edit homework -->
-                <form action="{{ url_for('homework_bp.delete_homework', hw_id=hw.id) }}" method="POST" style="display:inline;">
+                <form action="{{ url_for('homework_bp.delete_homework', hw_id=hw.id) }}" method="POST" style="display:inline;"> 
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                 </form>
             </div>

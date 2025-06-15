@@ -5,7 +5,7 @@
 <form method="POST"> <!-- This form is used to set a new password after a reset token has been verified -->
     {{ form.hidden_tag() }}
     <div class="mb-3">{{ form.password.label }} {{ form.password(class="form-control") }}</div>
-    <div class="mb-3">{{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}</div>
-    <button class="btn btn-success" type="submit">Reset Password</button>
+    <div class="mb-3">{{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}</div> 
+    <button class="btn btn-success" type="submit">Reset Password</button> 
 </form>
 {% endblock %}

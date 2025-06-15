@@ -14,7 +14,8 @@
             <a href="{{ url_for('homework_bp.edit_homework', hw_id=hw.id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Link to edit homework -->
             <!-- 'homework_bp.edit_homework' is the route for editing homework -->
             <form action="{{ url_for('homework_bp.delete_homework', hw_id=hw.id) }}" method="POST" style="display:inline;">
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this homework?');">Delete</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this homework?');">Delete</button> <!-- Form to delete homework -->
+            <!-- 'homework_bp.delete_homework' is the route for deleting homework -->
             </form>
         </div>
     </li>

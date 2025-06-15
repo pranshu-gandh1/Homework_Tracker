@@ -27,11 +27,11 @@ def add_extracurricular():
             description=form.description.data,
             user_id=current_user.id
         )
-        db.session.add(ec)
-        db.session.commit()
+        db.session.add(ec) # Add new extracurricular to the database
+        db.session.commit() # Commit changes to the database
         flash('Extra Curricular added!', 'success')
-        return redirect(url_for('extracurricular_bp.add_extracurricular'))
-    return render_template('add_extracurricular.html', form=form, extracurriculars=extracurriculars)
+        return redirect(url_for('extracurricular_bp.add_extracurricular')) # Redirect to the add extracurricular page to show updated list
+    return render_template('add_extracurricular.html', form=form, extracurriculars=extracurriculars) # Render the add extracurricular form with existing extracurriculars
 
 @extracurricular_bp.route('/extracurricular/edit/<int:ec_id>', methods=['GET', 'POST'])
 @login_required
@@ -44,16 +44,16 @@ def edit_extracurricular(ec_id):
         return redirect(url_for('extracurricular_bp.extracurricular_list'))
     form = ExtracurricularForm(obj=ec)
     if form.validate_on_submit():
-        ec.title = form.title.data
-        ec.category = form.category.data
-        ec.due_date = form.due_date.data
-        ec.description = form.description.data
-        db.session.commit()
+        ec.title = form.title.data # Update title
+        ec.category = form.category.data # Update category
+        ec.due_date = form.due_date.data # Update due date
+        ec.description = form.description.data # Update description
+        db.session.commit() # Commit changes to the database
         flash('Extra Curricular updated!', 'success')
         return redirect(url_for('extracurricular_bp.extracurricular_list'))
     return render_template('edit_extracurricular.html', form=form)
 
-@extracurricular_bp.route('/extracurricular/delete/<int:ec_id>', methods=['POST'])
+@extracurricular_bp.route('/extracurricular/delete/<int:ec_id>', methods=['POST']) # Delete an extracurricular activity
 @login_required
 def delete_extracurricular(ec_id):
     # Delete extracurricular if user owns it

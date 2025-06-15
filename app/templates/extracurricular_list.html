@@ -11,12 +11,12 @@
                     <div>
                         <strong>{{ activity.title }}</strong><br>
                         {% if activity.description %}
-                            Description: {{ activity.description }}<br>
+                            Description: {{ activity.description }}<br> <!-- Display the description if it exists -->
                         {% endif %}
                         Category: {{ activity.category }}<br>
-                        Due: {{ activity.due_date.strftime('%Y-%m-%d') }}
+                        Due: {{ activity.due_date.strftime('%Y-%m-%d') }} <!-- Format the date to YYYY-MM-DD -->
                     </div>
-                    <span class="badge bg-secondary">{{ activity.status }}</span>
+                    <span class="badge bg-secondary">{{ activity.status }}</span> <!-- Display the status of the activity -->
                 </li>
             {% endfor %}
         </ul>

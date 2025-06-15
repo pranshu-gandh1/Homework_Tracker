@@ -21,8 +21,8 @@
         <div>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
-            {% for error in form.password.errors %}
-                <div class="text-danger">{{ error }}</div>
+            {% for error in form.password.errors %} <!-- Display errors for password -->
+                <div class="text-danger">{{ error }}</div> 
             {% endfor %}
         </div>
 
@@ -30,7 +30,7 @@
             {{ form.remember() }} {{ form.remember.label }}
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit">Login</button> 
     </form>
 
     <p><a href="{{ url_for('auth.reset_request') }}">Forgot Password?</a></p>

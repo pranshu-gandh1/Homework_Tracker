@@ -7,14 +7,14 @@
         {{ form.title.label }} {{ form.title(class="form-control") }} <!-- 'title' is an instance of Homework model with attribute 'title' -->
     </div>
     <div class="mb-3">
-        {{ form.category.label }} {{ form.category(class="form-control") }}
+        {{ form.category.label }} {{ form.category(class="form-control") }} <!-- 'category' is a SelectField with options for homework categories -->
     </div>
     <div class="mb-3">
-        {{ form.due_date.label }} {{ form.due_date(class="form-control") }}
+        {{ form.due_date.label }} {{ form.due_date(class="form-control") }} <!-- 'due_date' is a DateField for selecting the due date of the homework -->
     </div>
     <div class="mb-3">
-        {{ form.description.label }} {{ form.description(class="form-control") }}
+        {{ form.description.label }} {{ form.description(class="form-control") }} <!-- 'description' is a TextAreaField for entering details about the homework -->
     </div>
-    {{ form.submit(class="btn btn-primary") }}
+    {{ form.submit(class="btn btn-primary") }} <!-- Submit button to save the changes made to the homework -->
 </form>
 {% endblock %}

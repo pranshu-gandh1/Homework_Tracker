@@ -3,7 +3,7 @@ from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 from app.models import Homework, Extracurricular
 
-list_views = Blueprint('list_views', __name__)
+list_views = Blueprint('list_views', __name__) # Blueprint for listing homework and extracurricular items
 
 @list_views.route('/homework')
 @login_required  # Ensures only logged-in users can access this route

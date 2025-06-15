@@ -12,7 +12,7 @@
         <div>
             <!-- 'ec' is an instance of Extracurricular model with attributes 'title', 'activity_type', 'due_date', and 'description' -->
             <a href="{{ url_for('extracurricular_bp.edit_extracurricular', ec_id=ec.id) }}" class="btn btn-sm btn-warning">Edit</a>
-            <form action="{{ url_for('extracurricular_bp.delete_extracurricular', ec_id=ec.id) }}" method="POST" style="display:inline;">
+            <form action="{{ url_for('extracurricular_bp.delete_extracurricular', ec_id=ec.id) }}" method="POST" style="display:inline;"> <!-- Form to delete -->
                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this activity?');">Delete</button> 
             </form>
         </div>
